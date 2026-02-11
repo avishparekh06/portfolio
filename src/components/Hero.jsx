@@ -1,15 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Code, Database, Globe } from 'lucide-react';
+import ThreeBackground from './ThreeBackground';
 
 const Hero = () => {
     return (
         <section id="home" className="min-h-screen relative flex items-center justify-center overflow-hidden bg-slate-950">
-            {/* Background Elements */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-                <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px]" />
-                <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[120px]" />
-            </div>
+            {/* Three.js Particle Network Background */}
+            <ThreeBackground />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
                 <motion.div
