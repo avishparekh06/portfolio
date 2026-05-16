@@ -18,7 +18,7 @@ const Experience = () => {
             company: 'Visa',
             period: 'May 2026 – Aug 2026',
             status: 'incoming',
-            description: [],
+            description: ['Post Purchase team.'],
             tags: ['Fintech', 'Payments Infrastructure'],
             accentColor: '#c8a850',
         },

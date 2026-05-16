@@ -101,7 +101,7 @@ const Hero = () => {
                         margin: '0 auto 40px',
                     }}
                 >
-                    I build scalable products and AI-driven systems — from RAG pipelines and marketplaces
+                    I build scalable products and AI-driven systems from RAG pipelines and marketplaces
                     to SEO dashboards serving 10,000+ businesses. Incoming at{' '}
                     <span style={{ color: '#3a3a3a', fontWeight: 500 }}>Visa</span>.
                 </motion.p>
