@@ -1,93 +1,163 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Server, Layout, Terminal, BookOpen, Calculator } from 'lucide-react';
+import { GraduationCap, BookOpen } from 'lucide-react';
+
+const skillCategories = [
+    { name: 'Languages', color: '#1a3a3a', textColor: '#ffffff', tools: ['Python', 'Java', 'C++', 'JavaScript', 'TypeScript', 'SQL', 'C', 'Go', 'Rust', 'Swift', 'R'] },
+    { name: 'Frontend', color: '#b8a4ed', textColor: '#0a0a0a', tools: ['React', 'Next.js', 'TailwindCSS', 'MUI', 'HTML/CSS'] },
+    { name: 'Backend & Tools', color: '#ffb084', textColor: '#0a0a0a', tools: ['Node.js', 'Express.js', 'Flask', 'FastAPI', 'Docker', 'AWS', 'GCP', 'Git'] },
+    { name: 'AI / ML', color: '#e8b94a', textColor: '#0a0a0a', tools: ['OpenAI API', 'Gemini API', 'RAG Pipelines', 'PyTorch', 'TensorFlow', 'OpenCV', 'Pandas', 'NumPy'] },
+    { name: 'Databases', color: '#ff4d8b', textColor: '#ffffff', tools: ['PostgreSQL', 'MySQL', 'MongoDB', 'Firebase', 'Supabase'] },
+];
 
 const About = () => {
     const education = {
-        school: "The University of Texas at Austin",
-        degree: "Bachelor of Science, Computer Science",
-        gpa: "3.9",
-        graduation: "May 2027",
-        details: "Major in Mathematics and Minor in Business",
-        coursework: ["Data Structures & Algorithms", "Computer Architecture", "Object-Oriented Programming", "Linear Algebra", "Honors Multivariable Calculus", "Discrete Math", "Probability"]
+        school: 'The University of Texas at Austin',
+        degree: 'Bachelor of Science, Computer Science',
+        gpa: '3.90',
+        graduation: 'May 2028',
+        details: 'Major in Mathematics · Minor in Business',
+        coursework: [
+            'Data Structures & Algorithms', 'Operating Systems', 'Computer Architecture',
+            'Machine Learning', 'Object-Oriented Programming', 'Linear Algebra',
+            'Multivariable Calculus', 'Discrete Mathematics', 'Probability & Statistics',
+        ],
     };
 
-    const skills = [
-        { name: "Languages", icon: <Code2 />, tools: ["Python", "Java", "C++", "JavaScript/TypeScript", "SQL", "Go", "Rust", "Swift"] },
-        { name: "Frontend", icon: <Layout />, tools: ["React", "Next.js", "Tailwind CSS", "MUI", "HTML/CSS"] },
-        { name: "Backend / Tools", icon: <Server />, tools: ["Node.js", "Flask", "FastAPI", "Docker", "AWS", "Git", "Firebase"] },
-        { name: "AI / ML", icon: <Terminal />, tools: ["OpenAI API", "Gemini API", "PyTorch", "TensorFlow", "Pandas", "RAG Pipelines"] },
-    ];
-
     return (
-        <section id="about" className="py-20 bg-slate-900 text-white">
-            <div className="max-w-7xl mx-auto px-6">
+        <section id="about" style={{ backgroundColor: '#faf5e8', padding: '96px 0' }}>
+            <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px' }}>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
+                    transition={{ duration: 0.5 }}
+                    style={{ marginBottom: 56 }}
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
-                    <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
+                    <p className="section-label" style={{ marginBottom: 12 }}>About Me</p>
+                    <h2 className="display-lg">Background &amp; Skills</h2>
                 </motion.div>
 
-                <div className="grid lg:grid-cols-2 gap-12 items-start">
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 32, alignItems: 'start' }}>
+                    {/* Education card */}
                     <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
+                        transition={{ duration: 0.5 }}
+                        style={{
+                            backgroundColor: '#fffaf0',
+                            borderRadius: 16,
+                            border: '1px solid #e5e5e5',
+                            padding: 32,
+                        }}
                     >
-                        <h3 className="text-2xl font-semibold mb-6">Education</h3>
-                        <div className="bg-slate-800 p-8 rounded-xl border border-slate-700 hover:border-blue-500/50 transition-colors mb-8">
-                            <div className="flex justify-between items-start mb-2">
-                                <h4 className="text-xl font-bold text-white">{education.school}</h4>
-                                <span className="text-blue-400 font-medium whitespace-nowrap">{education.graduation}</span>
-                            </div>
-                            <p className="text-lg text-gray-300 mb-1">{education.degree}</p>
-                            <p className="text-gray-400 mb-4">{education.details} • GPA: <span className="text-white font-semibold">{education.gpa}</span></p>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 20 }}>
+                            <GraduationCap size={16} style={{ color: '#6a6a6a' }} />
+                            <span className="section-label">Education</span>
+                        </div>
 
-                            <div className="border-t border-slate-700 pt-4">
-                                <p className="text-sm text-gray-400 font-semibold mb-2 flex items-center gap-2">
-                                    <BookOpen size={16} /> Relevant Coursework:
-                                </p>
-                                <div className="flex flex-wrap gap-2">
-                                    {education.coursework.map((course, i) => (
-                                        <span key={i} className="text-xs bg-slate-900 text-gray-300 px-2 py-1 rounded">
-                                            {course}
-                                        </span>
-                                    ))}
+                        <h3 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: 18, color: '#0a0a0a', marginBottom: 6, letterSpacing: '-0.3px' }}>
+                            {education.school}
+                        </h3>
+                        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 15, color: '#3a3a3a', fontWeight: 500, marginBottom: 4 }}>
+                            {education.degree}
+                        </p>
+                        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: '#6a6a6a', marginBottom: 24 }}>
+                            {education.details}
+                        </p>
+
+                        {/* GPA + Graduation row */}
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 24 }}>
+                            <div style={{ backgroundColor: '#1a3a3a', borderRadius: 12, padding: '16px', textAlign: 'center' }}>
+                                <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 800, fontSize: 28, color: '#ffffff', letterSpacing: '-1px', lineHeight: 1 }}>
+                                    {education.gpa}
                                 </div>
+                                <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.6)', marginTop: 4, fontWeight: 500 }}>GPA</div>
+                            </div>
+                            <div style={{ backgroundColor: '#f5f0e0', borderRadius: 12, padding: '16px', textAlign: 'center', border: '1px solid #e5e5e5' }}>
+                                <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: 16, color: '#0a0a0a', marginTop: 4 }}>
+                                    {education.graduation}
+                                </div>
+                                <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: '#6a6a6a', marginTop: 4, fontWeight: 500 }}>Graduation</div>
                             </div>
                         </div>
 
-                        <h3 className="text-2xl font-semibold mb-4">Summary</h3>
-                        <p className="text-gray-400 leading-relaxed mb-6">
-                            I am a Computer Science student at UT Austin with a strong 3.9 GPA, driven by a passion for building scalable software and AI-driven solutions. My experience ranges from developing marketplace platforms to engineering complex RAG pipelines for AI applications.
-                        </p>
+                        <div style={{ borderTop: '1px solid #e5e5e5', paddingTop: 20 }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 12 }}>
+                                <BookOpen size={12} style={{ color: '#9a9a9a' }} />
+                                <span className="section-label">Coursework</span>
+                            </div>
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                                {education.coursework.map((course, i) => (
+                                    <span
+                                        key={i}
+                                        style={{
+                                            fontFamily: "'Inter', sans-serif",
+                                            fontSize: 12,
+                                            fontWeight: 500,
+                                            color: '#3a3a3a',
+                                            backgroundColor: '#f5f0e0',
+                                            border: '1px solid #e5e5e5',
+                                            padding: '4px 10px',
+                                            borderRadius: 6,
+                                        }}
+                                    >
+                                        {course}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
                     </motion.div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        {skills.map((skill, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-blue-500/50 transition-colors h-full"
-                            >
-                                <div className="text-blue-400 mb-4">{skill.icon}</div>
-                                <h4 className="text-xl font-semibold mb-2">{skill.name}</h4>
-                                <div className="flex flex-wrap gap-2">
-                                    {skill.tools.map((tool, i) => (
-                                        <span key={i} className="text-sm text-gray-400">• {tool}</span>
-                                    ))}
-                                </div>
-                            </motion.div>
-                        ))}
+                    {/* Skills — colored category cards */}
+                    <div>
+                        <p className="section-label" style={{ marginBottom: 20 }}>Technical Skills</p>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                            {skillCategories.map((cat, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: 16 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.4, delay: index * 0.07 }}
+                                    style={{
+                                        backgroundColor: cat.color,
+                                        borderRadius: 16,
+                                        padding: '20px 24px',
+                                    }}
+                                >
+                                    <p style={{
+                                        fontFamily: "'Plus Jakarta Sans', sans-serif",
+                                        fontWeight: 700,
+                                        fontSize: 15,
+                                        color: cat.textColor,
+                                        marginBottom: 12,
+                                        letterSpacing: '-0.2px',
+                                    }}>
+                                        {cat.name}
+                                    </p>
+                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                                        {cat.tools.map((tool, i) => (
+                                            <span
+                                                key={i}
+                                                style={{
+                                                    fontFamily: "'Inter', sans-serif",
+                                                    fontSize: 12,
+                                                    fontWeight: 500,
+                                                    color: cat.textColor,
+                                                    backgroundColor: 'rgba(255,255,255,0.2)',
+                                                    padding: '3px 10px',
+                                                    borderRadius: 9999,
+                                                }}
+                                            >
+                                                {tool}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

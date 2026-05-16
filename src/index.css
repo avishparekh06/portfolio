@@ -4,4 +4,106 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #fffaf0;
+  color: #0a0a0a;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  text-wrap: balance;
+}
+
+p, li, blockquote {
+  text-wrap: pretty;
+}
+
+.section-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #6a6a6a;
+}
+
+.display-xl {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(56px, 9vw, 88px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -3px;
+  color: #0a0a0a;
+}
+
+.display-lg {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  color: #0a0a0a;
+}
+
+/* Feature card colors from DESIGN.md */
+.card-pink   { background-color: #ff4d8b; color: #ffffff; }
+.card-teal   { background-color: #1a3a3a; color: #ffffff; }
+.card-lavender { background-color: #b8a4ed; color: #0a0a0a; }
+.card-peach  { background-color: #ffb084; color: #0a0a0a; }
+.card-ochre  { background-color: #e8b94a; color: #0a0a0a; }
+.card-cream  { background-color: #f5f0e0; color: #0a0a0a; border: 1px solid #e5e5e5; }
+
+.btn-primary {
+  background-color: #0a0a0a;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 20px;
+  height: 44px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.15s;
+  text-decoration: none;
+}
+
+.btn-primary:hover { background-color: #1f1f1f; }
+.btn-primary:active { transform: scale(0.97); }
+
+.btn-secondary {
+  background-color: #fffaf0;
+  color: #0a0a0a;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 20px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid #e5e5e5;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color 0.15s, background-color 0.15s;
+  text-decoration: none;
+}
+
+.btn-secondary:hover { background-color: #f5f0e0; border-color: #d0ccc0; }
+.btn-secondary:active { transform: scale(0.97); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

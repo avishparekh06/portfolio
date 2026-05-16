@@ -8,7 +8,7 @@ import Contact from './components/Contact';
 
 function App() {
   return (
-    <div className="bg-slate-950 min-h-screen text-slate-200 selection:bg-blue-500/30">
+    <div style={{ backgroundColor: '#fffaf0', minHeight: '100vh', color: '#0a0a0a' }}>
       <Navbar />
       <Hero />
       <About />
