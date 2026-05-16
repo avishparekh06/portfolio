@@ -102,8 +102,7 @@ const Hero = () => {
                     }}
                 >
                     I build scalable products and AI-driven systems from RAG pipelines and marketplaces
-                    to SEO dashboards serving 10,000+ businesses. Incoming at{' '}
-                    <span style={{ color: '#3a3a3a', fontWeight: 500 }}>Visa</span>.
+                    to SEO dashboards serving 10,000+ businesses.
                 </motion.p>
 
                 {/* CTAs */}
