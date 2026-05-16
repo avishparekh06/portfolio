@@ -25,7 +25,7 @@ const Experience = () => {
         {
             title: 'Software Engineer Intern',
             company: 'RealWork',
-            period: 'May 2025 – Present',
+            period: 'May 2025 – May 2026',
             status: 'current',
             description: [
                 'Reduced reporting workload by 40% for 10,000+ businesses by building SEO dashboard with Flask and React.',
