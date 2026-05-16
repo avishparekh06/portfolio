@@ -140,7 +140,7 @@ const Experience = () => {
                                 <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 20px', display: 'flex', flexDirection: 'column', gap: 8 }}>
                                     {exp.description.map((item, i) => (
                                         <li key={i} style={{ display: 'flex', gap: 10, fontFamily: "'Inter', sans-serif", fontSize: 14, color: '#3a3a3a', lineHeight: 1.6 }}>
-                                            <span style={{ color: '#d0ccc0', marginTop: 3, flexShrink: 0 }}>—</span>
+                                            <span style={{ color: '#d0ccc0', marginTop: 6, flexShrink: 0, fontSize: 6 }}>●</span>
                                             <span>{highlightMetrics(item)}</span>
                                         </li>
                                     ))}

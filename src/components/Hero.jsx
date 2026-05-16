@@ -2,13 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 
-const stats = [
-    { value: '5', label: 'Internships', color: '#ffb084' },
-    { value: '3.90', label: 'GPA', color: '#b8a4ed' },
-    { value: '52M+', label: 'Data Points', color: '#a4d4c5' },
-    { value: '1st', label: 'HackTX Place', color: '#e8b94a' },
-];
-
 const Hero = () => {
     return (
         <section
@@ -129,48 +122,6 @@ const Hero = () => {
                     </a>
                 </motion.div>
 
-                {/* Stats strip */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.62 }}
-                    style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 10 }}
-                >
-                    {stats.map((stat, i) => (
-                        <div
-                            key={i}
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: 8,
-                                padding: '10px 18px',
-                                borderRadius: 9999,
-                                backgroundColor: stat.color,
-                                border: '1px solid transparent',
-                            }}
-                        >
-                            <span style={{
-                                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                                fontWeight: 800,
-                                fontSize: 20,
-                                color: '#0a0a0a',
-                                lineHeight: 1,
-                                letterSpacing: '-0.5px',
-                            }}>
-                                {stat.value}
-                            </span>
-                            <span style={{
-                                fontFamily: "'Inter', sans-serif",
-                                fontWeight: 500,
-                                fontSize: 13,
-                                color: '#0a0a0a',
-                                opacity: 0.7,
-                            }}>
-                                {stat.label}
-                            </span>
-                        </div>
-                    ))}
-                </motion.div>
             </div>
 
             {/* Scroll indicator */}
