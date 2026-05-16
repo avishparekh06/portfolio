@@ -52,11 +52,11 @@ p, li, blockquote {
 }
 
 /* Feature card colors from DESIGN.md */
-.card-pink   { background-color: #ff4d8b; color: #ffffff; }
-.card-teal   { background-color: #1a3a3a; color: #ffffff; }
-.card-lavender { background-color: #b8a4ed; color: #0a0a0a; }
-.card-peach  { background-color: #ffb084; color: #0a0a0a; }
-.card-ochre  { background-color: #e8b94a; color: #0a0a0a; }
+.card-pink   { background-color: #d4a8b8; color: #0a0a0a; }
+.card-teal   { background-color: #2a4040; color: #ffffff; }
+.card-lavender { background-color: #c0b4d8; color: #0a0a0a; }
+.card-peach  { background-color: #e0c0a0; color: #0a0a0a; }
+.card-ochre  { background-color: #c8a850; color: #0a0a0a; }
 .card-cream  { background-color: #f5f0e0; color: #0a0a0a; border: 1px solid #e5e5e5; }
 
 .btn-primary {

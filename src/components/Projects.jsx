@@ -11,8 +11,8 @@ const projects = [
         description: 'Car recommendation platform customizing vehicle matching based on financial and personal preferences. Engineered a RAG pipeline with embeddings for user profiles and car data. Integrated Gemini API and ElevenLabs for context-aware voice interactions, reducing dealership call time by 15%.',
         tech: ['RAG', 'Gemini API', 'ElevenLabs', 'Voice AI', 'Python'],
         github: 'https://github.com/avishparekh06',
-        cardColor: '#ff4d8b',
-        textColor: '#ffffff',
+        cardColor: '#d4a8b8',
+        textColor: '#0a0a0a',
     },
     {
         title: 'Pintos',
@@ -22,7 +22,7 @@ const projects = [
         description: 'Engineered a complete user program pipeline with argument passing, syscall handling, and process synchronization. Built a virtual memory subsystem with on-demand paging, frame table, swap, clock eviction, and stack growth detection. Implemented a full file system with extensible inodes, nested subdirectories, and buffer cache.',
         tech: ['C', 'OS', 'Virtual Memory', 'File Systems', 'Systems Programming'],
         github: 'https://github.com/avishparekh06',
-        cardColor: '#1a3a3a',
+        cardColor: '#2a4040',
         textColor: '#ffffff',
     },
     {
@@ -33,7 +33,7 @@ const projects = [
         description: 'Developed a full 5-stage ARM pipeline emulator in C covering fetch, decode, execute, memory, and writeback stages. Designed hazard control, forwarding logic, and pipeline registers to handle data and control hazards across stages.',
         tech: ['C', 'ARM Architecture', 'CPU Pipeline', 'Computer Architecture'],
         github: 'https://github.com/avishparekh06',
-        cardColor: '#b8a4ed',
+        cardColor: '#c0b4d8',
         textColor: '#0a0a0a',
     },
     {
@@ -44,7 +44,7 @@ const projects = [
         description: 'AI-powered interview practice tool with voice-based interaction and real-time feedback. Reached 95%+ accuracy in grading by integrating OpenAI language models for response evaluation.',
         tech: ['React', 'TailwindCSS', 'OpenAI API', 'VAPI', 'Python'],
         github: 'https://github.com/avishparekh06',
-        cardColor: '#ffb084',
+        cardColor: '#e0c0a0',
         textColor: '#0a0a0a',
     },
     {
@@ -55,7 +55,7 @@ const projects = [
         description: 'Real-time market data dashboard for 10,000+ cryptocurrencies via CoinGecko API integration. Interactive components display price, market cap, and 24h percent changes with live data.',
         tech: ['React', 'CoinGecko API', 'Data Visualization', 'JavaScript'],
         github: 'https://github.com/avishparekh06',
-        cardColor: '#e8b94a',
+        cardColor: '#c8a850',
         textColor: '#0a0a0a',
     },
 ];

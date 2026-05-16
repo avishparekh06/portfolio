@@ -20,7 +20,7 @@ const Experience = () => {
             status: 'incoming',
             description: [],
             tags: ['Fintech', 'Payments Infrastructure'],
-            accentColor: '#e8b94a',
+            accentColor: '#c8a850',
         },
         {
             title: 'Software Engineer Intern',
@@ -34,7 +34,7 @@ const Experience = () => {
                 'Engineered AI system that produced job summaries for each service area using job metadata to boost SEO performance.',
             ],
             tags: ['React', 'Flask', 'AI/ML', 'SEO', 'PostgreSQL'],
-            accentColor: '#ff4d8b',
+            accentColor: '#d4a8b8',
         },
         {
             title: 'Software Engineer Intern',
@@ -47,7 +47,7 @@ const Experience = () => {
                 'Enhanced usability and boosted engagement by redesigning UI with modern layouts and responsive components.',
             ],
             tags: ['Mobile Dev', 'RAG', 'OpenAI API', 'UI/UX'],
-            accentColor: '#b8a4ed',
+            accentColor: '#c0b4d8',
         },
         {
             title: 'Software Engineer Intern',
@@ -60,7 +60,7 @@ const Experience = () => {
                 'Increased user traction by creating landing page with Next.js and TailwindCSS to showcase marketplace features.',
             ],
             tags: ['Next.js', 'TailwindCSS', 'API Design', 'Database'],
-            accentColor: '#ffb084',
+            accentColor: '#e0c0a0',
         },
         {
             title: 'Software Engineer',
@@ -73,7 +73,7 @@ const Experience = () => {
                 'Improved reliability and deployment speed by containerizing service with Docker and integrating CI/CD pipelines.',
             ],
             tags: ['ReactJS', 'Flask', 'PostgreSQL', 'Docker', 'CI/CD'],
-            accentColor: '#a4d4c5',
+            accentColor: '#a0c0b8',
         },
     ];
 

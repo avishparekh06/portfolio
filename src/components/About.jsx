@@ -3,11 +3,11 @@ import { motion } from 'framer-motion';
 import { GraduationCap, BookOpen } from 'lucide-react';
 
 const skillCategories = [
-    { name: 'Languages', color: '#1a3a3a', textColor: '#ffffff', tools: ['Python', 'Java', 'C++', 'JavaScript', 'TypeScript', 'SQL', 'C', 'Go', 'Rust', 'Swift', 'R'] },
-    { name: 'Frontend', color: '#b8a4ed', textColor: '#0a0a0a', tools: ['React', 'Next.js', 'TailwindCSS', 'MUI', 'HTML/CSS'] },
-    { name: 'Backend & Tools', color: '#ffb084', textColor: '#0a0a0a', tools: ['Node.js', 'Express.js', 'Flask', 'FastAPI', 'Docker', 'AWS', 'GCP', 'Git'] },
-    { name: 'AI / ML', color: '#e8b94a', textColor: '#0a0a0a', tools: ['OpenAI API', 'Gemini API', 'RAG Pipelines', 'PyTorch', 'TensorFlow', 'OpenCV', 'Pandas', 'NumPy'] },
-    { name: 'Databases', color: '#ff4d8b', textColor: '#ffffff', tools: ['PostgreSQL', 'MySQL', 'MongoDB', 'Firebase', 'Supabase'] },
+    { name: 'Languages', color: '#2a4040', textColor: '#ffffff', tools: ['Python', 'Java', 'C++', 'JavaScript', 'TypeScript', 'SQL', 'C', 'Go', 'Rust', 'Swift', 'R'] },
+    { name: 'Frontend', color: '#c0b4d8', textColor: '#0a0a0a', tools: ['React', 'Next.js', 'TailwindCSS', 'MUI', 'HTML/CSS'] },
+    { name: 'Backend & Tools', color: '#e0c0a0', textColor: '#0a0a0a', tools: ['Node.js', 'Express.js', 'Flask', 'FastAPI', 'Docker', 'AWS', 'GCP', 'Git'] },
+    { name: 'AI / ML', color: '#c8a850', textColor: '#0a0a0a', tools: ['OpenAI API', 'Gemini API', 'RAG Pipelines', 'PyTorch', 'TensorFlow', 'OpenCV', 'Pandas', 'NumPy'] },
+    { name: 'Databases', color: '#d4a8b8', textColor: '#0a0a0a', tools: ['PostgreSQL', 'MySQL', 'MongoDB', 'Firebase', 'Supabase'] },
 ];
 
 const About = () => {
@@ -69,7 +69,7 @@ const About = () => {
 
                         {/* GPA + Graduation row */}
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 24 }}>
-                            <div style={{ backgroundColor: '#1a3a3a', borderRadius: 12, padding: '16px', textAlign: 'center' }}>
+                            <div style={{ backgroundColor: '#2a4040', borderRadius: 12, padding: '16px', textAlign: 'center' }}>
                                 <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 800, fontSize: 28, color: '#ffffff', letterSpacing: '-1px', lineHeight: 1 }}>
                                     {education.gpa}
                                 </div>
