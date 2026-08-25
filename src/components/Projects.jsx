@@ -36,28 +36,6 @@ const projects = [
         cardColor: '#c0b4d8',
         textColor: '#0a0a0a',
     },
-    {
-        title: 'AI Interview Trainer',
-        subtitle: null,
-        award: null,
-        date: 'January 2025',
-        description: 'AI-powered interview practice tool with voice-based interaction and real-time feedback. Reached 95%+ accuracy in grading by integrating OpenAI language models for response evaluation.',
-        tech: ['React', 'TailwindCSS', 'OpenAI API', 'VAPI', 'Python'],
-        github: 'https://github.com/avishparekh06/AI-Interview-Trainer',
-        cardColor: '#e0c0a0',
-        textColor: '#0a0a0a',
-    },
-    {
-        title: 'Crypto Market Analytics',
-        subtitle: null,
-        award: null,
-        date: 'December 2024',
-        description: 'Real-time market data dashboard for 10,000+ cryptocurrencies via CoinGecko API integration. Interactive components display price, market cap, and 24h percent changes with live data.',
-        tech: ['React', 'CoinGecko API', 'Data Visualization', 'JavaScript'],
-        github: 'https://github.com/avishparekh06/crypto-check',
-        cardColor: '#c8a850',
-        textColor: '#0a0a0a',
-    },
 ];
 
 const Projects = () => {

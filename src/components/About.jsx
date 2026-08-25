@@ -3,18 +3,17 @@ import { motion } from 'framer-motion';
 import { GraduationCap, BookOpen } from 'lucide-react';
 
 const skillCategories = [
-    { name: 'Languages', color: '#2a4040', textColor: '#ffffff', tools: ['Python', 'Java', 'C++', 'JavaScript', 'TypeScript', 'SQL', 'C', 'Go', 'Rust', 'Swift', 'R'] },
-    { name: 'Frontend', color: '#c0b4d8', textColor: '#0a0a0a', tools: ['React', 'Next.js', 'TailwindCSS', 'MUI', 'HTML/CSS'] },
-    { name: 'Backend & Tools', color: '#e0c0a0', textColor: '#0a0a0a', tools: ['Node.js', 'Express.js', 'Flask', 'FastAPI', 'Docker', 'AWS', 'GCP', 'Git'] },
-    { name: 'AI / ML', color: '#c8a850', textColor: '#0a0a0a', tools: ['OpenAI API', 'Gemini API', 'RAG Pipelines', 'PyTorch', 'TensorFlow', 'OpenCV', 'Pandas', 'NumPy'] },
-    { name: 'Databases', color: '#d4a8b8', textColor: '#0a0a0a', tools: ['PostgreSQL', 'MySQL', 'MongoDB', 'Firebase', 'Supabase'] },
+    { name: 'Languages', color: '#2a4040', textColor: '#ffffff', tools: ['Python', 'Java', 'C++', 'JavaScript', 'TypeScript', 'SQL', 'C', 'Go', 'Rust', 'Swift', 'R', 'HTML', 'CSS'] },
+    { name: 'Frameworks & Tools', color: '#e0c0a0', textColor: '#0a0a0a', tools: ['React', 'Node.js', 'Express.js', 'Flask', 'FastAPI', 'Next.js', 'Docker', 'Git', 'AWS', 'GCP', 'TailwindCSS', 'Splunk'] },
+    { name: 'Databases', color: '#d4a8b8', textColor: '#0a0a0a', tools: ['PostgreSQL', 'MySQL', 'MongoDB', 'Firebase', 'Supabase', 'pgvector', 'Neo4j'] },
+    { name: 'AI / ML', color: '#c8a850', textColor: '#0a0a0a', tools: ['RAG Pipelines', 'LangGraph', 'PyTorch', 'TensorFlow', 'OpenCV', 'Pandas', 'NumPy', 'scikit-learn'] },
 ];
 
 const About = () => {
     const education = {
         school: 'The University of Texas at Austin',
         degree: 'Bachelor of Science, Computer Science',
-        gpa: '3.90',
+        gpa: '3.89',
         graduation: 'May 2028',
         details: 'Major in Mathematics · Minor in Business',
         coursework: [

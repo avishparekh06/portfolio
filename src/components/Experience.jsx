@@ -14,19 +14,24 @@ const highlightMetrics = (text) => {
 const Experience = () => {
     const experiences = [
         {
-            title: 'Incoming Software Engineer Intern',
+            title: 'Software Engineer Intern',
             company: 'Visa',
             period: 'May 2026 – Aug 2026',
-            status: 'incoming',
-            description: ['Post Purchase team.'],
-            tags: ['Fintech', 'Payments Infrastructure'],
+            status: null,
+            description: [
+                'Reduced triage time 70% by building system to autonomously detect and diagnose issues across 57M+ daily logs.',
+                'Grouped error logs into actionable categories via RAG embeddings in pgvector, condensing raw volume by 85%.',
+                'Developed LLM-driven pipeline to classify error severity, triggering automated email alerts on critical spikes.',
+                'Designed root cause engine with LangGraph agents traversing Neo4j knowledge graph of codebases to suggest fixes.',
+            ],
+            tags: ['LangGraph', 'RAG', 'pgvector', 'Neo4j', 'LLM'],
             accentColor: '#c8a850',
         },
         {
             title: 'Software Engineer Intern',
             company: 'RealWork',
             period: 'May 2025 – May 2026',
-            status: 'current',
+            status: null,
             description: [
                 'Reduced reporting workload by 40% for 10,000+ businesses by building SEO dashboard with Flask and React.',
                 'Aggregated 52M+ keyword and visibility data points to deliver growth insights and improve platform performance.',
@@ -50,26 +55,13 @@ const Experience = () => {
             accentColor: '#c0b4d8',
         },
         {
-            title: 'Software Engineer Intern',
-            company: 'Phenom',
-            period: 'Aug 2024 – Dec 2024',
-            status: null,
-            description: [
-                'Launched marketplace connecting 900+ photographers and athletes with end-to-end booking and payment workflows.',
-                'Streamlined contract bookings by implementing custom API endpoints and database schemas to validate each step.',
-                'Increased user traction by creating landing page with Next.js and TailwindCSS to showcase marketplace features.',
-            ],
-            tags: ['Next.js', 'TailwindCSS', 'API Design', 'Database'],
-            accentColor: '#e0c0a0',
-        },
-        {
             title: 'Software Engineer',
             company: 'CodeAssist',
             period: 'Aug 2024 – Dec 2024',
             status: null,
             description: [
                 'Built OpenAI-assisted system to automate evaluation of code quality and design with ReactJS, Flask, and PostgreSQL.',
-                'Reduced assessment time 50% by optimizing evaluation workflows for 100+ student code submissions each semester.',
+                'Decreased assessment time 50% by optimizing evaluation workflows for 100+ student code submissions each semester.',
                 'Improved reliability and deployment speed by containerizing service with Docker and integrating CI/CD pipelines.',
             ],
             tags: ['ReactJS', 'Flask', 'PostgreSQL', 'Docker', 'CI/CD'],
