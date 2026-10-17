@@ -295,9 +295,9 @@ html[data-loading='1']:not([data-reveal]) .screen-nav { opacity: 0; }
 .tile-num { flex: none; font-family: var(--display); font-size: clamp(11px, 1.15cqw, 16px); font-weight: 500; letter-spacing: -0.01em; padding-top: 1px; min-width: 1.6cqw; }
 .gallery-solo .gallery-tiles { justify-content: center; gap: 2.2cqw; }
 .gallery-solo .tile-slot { max-width: 27cqw; }
-.tile:hover, .tile:focus-visible { background: var(--black); color: var(--bg); }
+.tile:hover { background: var(--black); color: var(--bg); }
 .tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-.tile:hover .micro, .tile:focus-visible .micro { color: #a8a8a8; }
+.tile:hover .micro { color: #a8a8a8; }
 .tile-inner { display: flex; flex-direction: column; justify-content: space-between; height: 100%; padding: clamp(10px, 1.2cqw, 18px); box-sizing: border-box; }
 .tile-top { display: flex; justify-content: space-between; gap: 8px; }
 .tile-title { font-size: clamp(22px, 2.5cqw, 38px); line-height: 1; letter-spacing: -0.02em; }
@@ -305,7 +305,11 @@ html[data-loading='1']:not([data-reveal]) .screen-nav { opacity: 0; }
 .tile-foot .micro { line-height: 1.4; }
 
 /* ------------------------------------------------------------------ detail sheet */
-.detail { position: absolute; inset: 0; z-index: 120; background: var(--black); color: #ececec; display: flex; flex-direction: column; padding: clamp(14px, 2.6cqh, 30px) var(--frame-pad, clamp(16px, 3.2cqw, 48px)) clamp(18px, 3.2cqh, 38px); overflow: hidden; }
+.detail { animation: detail-in 0.65s cubic-bezier(0.76, 0, 0.24, 1) both; position: absolute; inset: 0; z-index: 120; background: var(--black); color: #ececec; display: flex; flex-direction: column; padding: clamp(14px, 2.6cqh, 30px) var(--frame-pad, clamp(16px, 3.2cqw, 48px)) clamp(18px, 3.2cqh, 38px); overflow: hidden; }
+.detail.is-closing { animation: detail-out 0.52s cubic-bezier(0.45, 0, 0.15, 1) forwards; pointer-events: none; }
+@keyframes detail-in { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes detail-out { from { clip-path: inset(0 0 0 0); } to { clip-path: inset(100% 0 0 0); } }
+@media (prefers-reduced-motion: reduce) { .detail, .detail.is-closing { animation-duration: 0.01s; } }
 .detail-bar { display: flex; justify-content: space-between; align-items: center; font-size: clamp(11px, 1.02cqw, 14px); color: #8c8c8c; }
 .detail-where span { margin-left: 12px; color: #ececec; font-variant-numeric: tabular-nums; }
 .detail-actions { display: flex; gap: clamp(14px, 2.2cqw, 30px); }
