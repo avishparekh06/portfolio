@@ -41,12 +41,13 @@ const Navbar = () => {
 
     return (
     <header
+        className="screen-nav"
         style={{
             position: 'absolute', top: 0, left: 0, right: 0, zIndex: 50,
             backgroundColor: dark ? 'var(--black)' : 'var(--bg)',
             color: dark ? '#ececec' : 'var(--ink)',
             borderBottom: `1px solid ${dark ? 'transparent' : 'var(--line)'}`,
-            transition: 'background-color 0.25s, color 0.25s',
+            transition: 'background-color 0.25s, color 0.25s, opacity 0.9s ease 0.25s',
         }}
     >
         <nav

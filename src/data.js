@@ -6,7 +6,7 @@ export const profile = {
     location: 'Austin, TX',
     github: 'https://github.com/avishparekh06',
     linkedin: 'https://linkedin.com/in/avishparekh',
-    intro: 'I build scalable products and AI-driven systems from RAG pipelines and marketplaces to SEO dashboards serving 10,000+ businesses.',
+    intro: 'I build scalable products and AI-driven systems, from RAG pipelines and marketplaces to a voice AI agent serving thousands of businesses.',
 };
 
 export const education = {
