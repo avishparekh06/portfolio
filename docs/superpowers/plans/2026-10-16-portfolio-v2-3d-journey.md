@@ -1,3 +1,5 @@
+> **Superseded** by `2026-10-16-portfolio-v2-editorial-design.md`: the 3D scroll scene was dropped.
+
 # Portfolio v2: Scroll-Driven 3D Journey Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.

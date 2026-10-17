@@ -1,3 +1,5 @@
+> **Superseded** by `2026-10-16-portfolio-v2-editorial-design.md`: the 3D scroll scene was dropped.
+
 # Portfolio v2: Scroll-Driven 3D Journey
 
 Date: 2026-10-16

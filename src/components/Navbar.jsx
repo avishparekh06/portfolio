@@ -1,187 +1,76 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, FileText } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useContext, useEffect, useState } from 'react';
+import { ScrollRootContext } from '../scrollRoot';
+import { profile } from '../data';
 
+const links = [
+    { name: 'About', href: '#about' },
+    { name: 'Works', href: '#experience' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Contact', href: '#contact' },
+];
+
+// True while a fully-open black curtain sits under the nav (same progress as Curtain's scroll
+// offsets), measured against the monitor screen rather than the window.
+const overCurtain = (root) => {
+    if (!root) return false;
+    const box = root.getBoundingClientRect();
+    return [...root.querySelectorAll('[data-curtain]')].some((el) => {
+        const r = el.getBoundingClientRect();
+        const top = r.top - box.top;
+        const progress = (box.height - top) / (box.height + r.height);
+        return top <= 32 && top + r.height > 32 && progress >= 0.4;
+    });
+};
+
+// Solid gray on the page, solid black while a curtain is open, so it never fights the content.
 const Navbar = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
-    const [activeSection, setActiveSection] = useState('home');
-
+    const root = useContext(ScrollRootContext);
+    const [dark, setDark] = useState(false);
     useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
-            const sections = ['home', 'about', 'experience', 'projects', 'contact'];
-            const current = sections.find(id => {
-                const el = document.getElementById(id);
-                if (!el) return false;
-                const { top, bottom } = el.getBoundingClientRect();
-                return top <= 80 && bottom >= 80;
-            });
-            if (current) setActiveSection(current);
+        const scroller = root.current;
+        if (!scroller) return undefined;
+        const update = () => setDark(overCurtain(scroller));
+        update();
+        scroller.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        return () => {
+            scroller.removeEventListener('scroll', update);
+            window.removeEventListener('resize', update);
         };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    const navLinks = [
-        { name: 'About', href: '#about', id: 'about' },
-        { name: 'Experience', href: '#experience', id: 'experience' },
-        { name: 'Projects', href: '#projects', id: 'projects' },
-        { name: 'Contact', href: '#contact', id: 'contact' },
-    ];
+    }, [root]);
 
     return (
+    <header
+        style={{
+            position: 'absolute', top: 0, left: 0, right: 0, zIndex: 50,
+            backgroundColor: dark ? 'var(--black)' : 'var(--bg)',
+            color: dark ? '#ececec' : 'var(--ink)',
+            borderBottom: `1px solid ${dark ? 'transparent' : 'var(--line)'}`,
+            transition: 'background-color 0.25s, color 0.25s',
+        }}
+    >
         <nav
-            style={{
-                position: 'fixed',
-                width: '100%',
-                zIndex: 50,
-                height: 64,
-                backgroundColor: '#fffaf0',
-                borderBottom: scrolled ? '1px solid #e5e5e5' : '1px solid transparent',
-                transition: 'border-color 0.3s',
-                display: 'flex',
-                alignItems: 'center',
-            }}
+            className="page"
+            aria-label="Primary"
+            style={{ height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}
         >
-            <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                {/* Logo */}
-                <a href="#home" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
-                    <div
-                        style={{
-                            width: 36,
-                            height: 36,
-                            borderRadius: 10,
-                            backgroundColor: '#0a0a0a',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            color: '#fffaf0',
-                            fontFamily: "'Plus Jakarta Sans', sans-serif",
-                            fontWeight: 800,
-                            fontSize: 13,
-                            letterSpacing: '-0.5px',
-                        }}
-                    >
-                        AP
-                    </div>
-                    <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500, fontSize: 14, color: '#3a3a3a' }}>
-                        Avish Parekh
-                    </span>
-                </a>
-
-                {/* Desktop nav */}
-                <div className="hidden md:flex" style={{ alignItems: 'center', gap: 4 }}>
-                    {navLinks.map((link) => {
-                        const isActive = activeSection === link.id;
-                        return (
-                            <a
-                                key={link.name}
-                                href={link.href}
-                                style={{
-                                    padding: '8px 14px',
-                                    borderRadius: 9999,
-                                    fontFamily: "'Inter', sans-serif",
-                                    fontWeight: 500,
-                                    fontSize: 14,
-                                    color: isActive ? '#0a0a0a' : '#6a6a6a',
-                                    backgroundColor: isActive ? '#f5f0e0' : 'transparent',
-                                    textDecoration: 'none',
-                                    transition: 'color 0.15s, background-color 0.15s',
-                                }}
-                                onMouseEnter={e => { if (!isActive) e.currentTarget.style.color = '#0a0a0a'; }}
-                                onMouseLeave={e => { if (!isActive) e.currentTarget.style.color = '#6a6a6a'; }}
-                            >
-                                {link.name}
-                            </a>
-                        );
-                    })}
-                </div>
-
-                {/* Right */}
-                <div className="hidden md:flex" style={{ alignItems: 'center', gap: 8 }}>
-                    <a
-                        href="https://github.com/avishparekh06"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500, fontSize: 14, color: '#6a6a6a', textDecoration: 'none', padding: '8px 12px' }}
-                        onMouseEnter={e => e.currentTarget.style.color = '#0a0a0a'}
-                        onMouseLeave={e => e.currentTarget.style.color = '#6a6a6a'}
-                    >
-                        GitHub
-                    </a>
-                    <a
-                        href="https://linkedin.com/in/avishparekh"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500, fontSize: 14, color: '#6a6a6a', textDecoration: 'none', padding: '8px 12px' }}
-                        onMouseEnter={e => e.currentTarget.style.color = '#0a0a0a'}
-                        onMouseLeave={e => e.currentTarget.style.color = '#6a6a6a'}
-                    >
-                        LinkedIn
-                    </a>
-                    <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ height: 36, padding: '0 16px', fontSize: 13 }}>
-                        <FileText size={13} /> Resume
-                    </a>
-                </div>
-
-                {/* Mobile toggle */}
-                <button
-                    onClick={() => setIsOpen(!isOpen)}
-                    className="md:hidden"
-                    style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#0a0a0a', padding: 8 }}
-                    aria-label={isOpen ? 'Close menu' : 'Open menu'}
-                >
-                    {isOpen ? <X size={22} /> : <Menu size={22} />}
-                </button>
+            <a href="#home" style={{ color: 'inherit', textDecoration: 'none', fontFamily: "'Inter Tight', sans-serif", fontWeight: 600, fontSize: 14, letterSpacing: '-0.02em' }}>
+                AVISH PAREKH<sup style={{ fontSize: 9, marginLeft: 2 }}>®</sup>
+            </a>
+            <ul className="nav-links" style={{ display: 'flex', gap: 28, listStyle: 'none', margin: 0, padding: 0 }}>
+                {links.map((l) => (
+                    <li key={l.name}>
+                        <a href={l.href} className="micro" style={{ color: 'inherit', textDecoration: 'none' }}>{l.name}</a>
+                    </li>
+                ))}
+            </ul>
+            <div style={{ display: 'flex', gap: 20 }}>
+                <a href={profile.github} target="_blank" rel="noopener noreferrer" className="micro nav-social" style={{ color: 'inherit', textDecoration: 'none' }}>GitHub</a>
+                <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="micro nav-social" style={{ color: 'inherit', textDecoration: 'none' }}>LinkedIn</a>
+                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="micro" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: 4 }}>Resume</a>
             </div>
-
-            {/* Mobile menu */}
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="md:hidden"
-                        style={{
-                            position: 'absolute',
-                            top: 64,
-                            left: 0,
-                            right: 0,
-                            backgroundColor: '#fffaf0',
-                            borderBottom: '1px solid #e5e5e5',
-                            overflow: 'hidden',
-                        }}
-                    >
-                        <div style={{ padding: '16px 24px', display: 'flex', flexDirection: 'column', gap: 4 }}>
-                            {navLinks.map((link) => (
-                                <a
-                                    key={link.name}
-                                    href={link.href}
-                                    onClick={() => setIsOpen(false)}
-                                    style={{
-                                        padding: '12px 0',
-                                        fontFamily: "'Inter', sans-serif",
-                                        fontWeight: 500,
-                                        fontSize: 16,
-                                        color: '#0a0a0a',
-                                        textDecoration: 'none',
-                                        borderBottom: '1px solid #f0ebe0',
-                                    }}
-                                >
-                                    {link.name}
-                                </a>
-                            ))}
-                            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ marginTop: 12, justifyContent: 'center' }}>
-                                <FileText size={14} /> Resume
-                            </a>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
         </nav>
+    </header>
     );
 };
 

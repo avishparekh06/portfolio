@@ -1,137 +1,53 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { ChevronDown, ArrowRight } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
+import Mascot from './Mascot';
+import { profile } from '../data';
 
 const Hero = () => {
-    return (
-        <section
-            id="home"
-            style={{
-                minHeight: '100vh',
-                backgroundColor: 'transparent',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                paddingTop: 64,
-                position: 'relative',
-                overflow: 'hidden',
-            }}
-        >
-            {/* Subtle warm gradient wash */}
-            <div
-                style={{
-                    position: 'absolute',
-                    inset: 0,
-                    background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(232,185,74,0.07) 0%, transparent 70%)',
-                    pointerEvents: 'none',
-                }}
-                aria-hidden="true"
-            />
+    const reduced = useReducedMotion();
+    const rise = (delay) => ({
+        initial: reduced ? false : { y: '105%' },
+        animate: { y: 0 },
+        transition: { duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] },
+    });
 
-            <div style={{ maxWidth: 720, margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
-                {/* Status badge */}
-                <motion.div
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.1 }}
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 32 }}
-                >
-                    <span
-                        style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: 6,
-                            padding: '4px 14px',
-                            borderRadius: 9999,
-                            backgroundColor: '#f5f0e0',
-                            border: '1px solid #e5e5e5',
-                            fontFamily: "'Inter', sans-serif",
-                            fontSize: 13,
-                            fontWeight: 500,
-                            color: '#3a3a3a',
-                        }}
-                    >
-                        <span style={{ width: 7, height: 7, borderRadius: '50%', backgroundColor: '#22c55e', display: 'inline-block' }} aria-hidden="true" />
+    return (
+        <section id="home" style={{ minHeight: '100cqh', paddingTop: 64, display: 'flex', flexDirection: 'column' }}>
+            <div className="page" style={{ flex: 1, display: 'flex', flexDirection: 'column', width: '100%' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: 20 }}>
+                    <span className="micro" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+                        <span aria-hidden="true" style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e' }} />
                         Open to internship &amp; full-time roles
                     </span>
-                </motion.div>
+                    <span className="micro">{profile.location}</span>
+                </div>
 
-                {/* Name */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
-                >
-                    <h1 className="display-xl" style={{ marginBottom: 20 }}>
-                        Avish Parekh.
-                    </h1>
-                </motion.div>
+                <h1 style={{ margin: 'clamp(12px, 4cqh, 64px) 0 0', lineHeight: 0.92, fontSize: 'clamp(44px, min(14.5cqw, 25cqh), 232px)', textAlign: 'center', whiteSpace: 'nowrap' }}>
+                    <span style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'top', paddingBottom: '0.08em' }}>
+                        <motion.span className="serif" style={{ display: 'inline-block' }} {...rise(0.1)}>{profile.name[0]}</motion.span>
+                    </span>{' '}
+                    <span style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'top', paddingBottom: '0.08em' }}>
+                        <motion.span className="sans-display" style={{ display: 'inline-block' }} {...rise(0.22)}>{profile.name[1]}</motion.span>
+                    </span>
+                    <sup className="micro" style={{ fontSize: 'clamp(10px, 1.4cqw, 18px)', marginLeft: 6, verticalAlign: 'top', position: 'relative', top: '0.9em' }}>(UT)</sup>
+                </h1>
 
-                {/* Role */}
-                <motion.p
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.32 }}
-                    style={{
-                        fontFamily: "'Inter', sans-serif",
-                        fontSize: 18,
-                        fontWeight: 400,
-                        color: '#6a6a6a',
-                        marginBottom: 12,
-                        lineHeight: 1.5,
-                    }}
-                >
-                    Software Engineer &amp; AI Builder
-                    <span style={{ margin: '0 10px', color: '#d0ccc0' }}>·</span>
-                    <span style={{ color: '#c2773a', fontWeight: 500 }}>CS @ UT Austin</span>
-                </motion.p>
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', marginTop: 'clamp(16px, 3cqh, 36px)' }}>
+                    {['Software Engineer', 'AI Builder', 'CS @ UT Austin', 'Austin, TX', '2026'].map((t) => (
+                        <span key={t} className="micro">{t}</span>
+                    ))}
+                </div>
 
-                {/* Description */}
-                <motion.p
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.42 }}
-                    style={{
-                        fontFamily: "'Inter', sans-serif",
-                        fontSize: 16,
-                        fontWeight: 400,
-                        color: '#9a9a9a',
-                        lineHeight: 1.6,
-                        maxWidth: 500,
-                        margin: '0 auto 40px',
-                    }}
-                >
-                    I build scalable products and AI-driven systems from RAG pipelines and marketplaces
-                    to SEO dashboards serving 10,000+ businesses.
-                </motion.p>
-
-                {/* CTAs */}
-                <motion.div
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.5 }}
-                    style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 64 }}
-                >
-                    <a href="#projects" className="btn-primary">
-                        View My Work
-                        <ArrowRight size={15} aria-hidden="true" />
-                    </a>
-                    <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-secondary">
-                        Download Resume
-                    </a>
-                </motion.div>
-
+                <div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1fr)', alignItems: 'end', gap: 24, paddingBottom: 40, marginTop: 24 }} className="hero-bottom">
+                    <p className="micro" style={{ maxWidth: 260, lineHeight: 1.7, color: 'var(--ink)' }}>
+                        ✦<br />Software engineer &amp; AI builder, studying computer science at UT Austin.
+                    </p>
+                    <Mascot style={{ width: '100%', maxWidth: 'min(340px, 62cqh)', justifySelf: 'center' }} />
+                    <p className="micro" style={{ maxWidth: 300, lineHeight: 1.7, color: 'var(--ink)', justifySelf: 'end' }}>
+                        ✦<br />{profile.intro}
+                    </p>
+                </div>
             </div>
-
-            {/* Scroll indicator */}
-            <motion.div
-                style={{ position: 'absolute', bottom: 32, left: '50%', transform: 'translateX(-50%)', color: '#9a9a9a' }}
-                animate={{ y: [0, 8, 0] }}
-                transition={{ repeat: Infinity, duration: 2.2, ease: 'easeInOut' }}
-                aria-hidden="true"
-            >
-                <ChevronDown size={20} />
-            </motion.div>
         </section>
     );
 };

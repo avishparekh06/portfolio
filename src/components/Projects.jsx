@@ -1,196 +1,48 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Github, Trophy } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+import Reveal from './Reveal';
+import { projects } from '../data';
 
-const projects = [
-    {
-        title: 'MyToyota',
-        subtitle: null,
-        award: '1st Place · Best Toyota Hack, HackTX',
-        date: 'October 2025',
-        description: 'Car recommendation platform customizing vehicle matching based on financial and personal preferences. Engineered a RAG pipeline with embeddings for user profiles and car data. Integrated Gemini API and ElevenLabs for context-aware voice interactions, reducing dealership call time by 15%.',
-        tech: ['RAG', 'Gemini API', 'ElevenLabs', 'Voice AI', 'Python'],
-        github: 'https://github.com/avishparekh06/my-toyota',
-        cardColor: '#d4a8b8',
-        textColor: '#0a0a0a',
-    },
-    {
-        title: 'Pintos',
-        subtitle: 'Operating Systems Kernel',
-        award: null,
-        date: 'April 2026',
-        description: 'Engineered a complete user program pipeline with argument passing, syscall handling, and process synchronization. Built a virtual memory subsystem with on-demand paging, frame table, swap, clock eviction, and stack growth detection. Implemented a full file system with extensible inodes, nested subdirectories, and buffer cache.',
-        tech: ['C', 'OS', 'Virtual Memory', 'File Systems', 'Systems Programming'],
-        github: null,
-        cardColor: '#2a4040',
-        textColor: '#ffffff',
-    },
-    {
-        title: 'charmV5',
-        subtitle: 'ARM Pipeline Emulator',
-        award: null,
-        date: 'November 2025',
-        description: 'Developed a full 5-stage ARM pipeline emulator in C covering fetch, decode, execute, memory, and writeback stages. Designed hazard control, forwarding logic, and pipeline registers to handle data and control hazards across stages.',
-        tech: ['C', 'ARM Architecture', 'CPU Pipeline', 'Computer Architecture'],
-        github: null,
-        cardColor: '#c0b4d8',
-        textColor: '#0a0a0a',
-    },
-];
-
-const Projects = () => {
-    return (
-        <section id="projects" style={{ backgroundColor: 'transparent', padding: '96px 0' }}>
-            <div style={{ maxWidth: 760, margin: '0 0 0 max(0px, calc((100vw - 896px) / 4))', padding: '0 24px' }}>
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    style={{ marginBottom: 56 }}
-                >
-                    <p className="section-label" style={{ marginBottom: 12 }}>Projects</p>
-                    <h2 className="display-lg">Things I've Built</h2>
-                </motion.div>
-
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 28 }}>
-                    {projects.map((project, index) => (
-                        <motion.div
-                            key={index}
-                            data-story="projects"
-                            initial={{ opacity: 0, y: 24 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.45, delay: index * 0.08 }}
-                            style={{
-                                backgroundColor: project.cardColor,
-                                borderRadius: 24,
-                                padding: 32,
-                                display: 'flex',
-                                flexDirection: 'column',
-                                transition: 'transform 0.2s, box-shadow 0.2s',
-                                cursor: 'default',
-                            }}
-                            whileHover={{ y: -4, boxShadow: '0 20px 48px rgba(0,0,0,0.12)' }}
-                        >
-                            {/* Top row */}
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 20 }}>
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                                    {project.award && (
-                                        <span style={{
-                                            display: 'inline-flex',
-                                            alignItems: 'center',
-                                            gap: 5,
-                                            fontFamily: "'Inter', sans-serif",
-                                            fontSize: 11,
-                                            fontWeight: 600,
-                                            color: project.textColor,
-                                            backgroundColor: 'rgba(255,255,255,0.25)',
-                                            padding: '3px 10px',
-                                            borderRadius: 9999,
-                                        }}>
-                                            <Trophy size={10} aria-hidden="true" />
-                                            {project.award}
-                                        </span>
-                                    )}
-                                    <span style={{
-                                        fontFamily: "'Inter', sans-serif",
-                                        fontSize: 12,
-                                        fontWeight: 500,
-                                        color: project.textColor,
-                                        opacity: 0.65,
-                                    }}>
-                                        {project.date}
-                                    </span>
-                                </div>
-                                {project.github && (
-                                    <a
-                                        href={project.github}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        aria-label={`${project.title} GitHub`}
-                                        style={{
-                                            color: project.textColor,
-                                            opacity: 0.65,
-                                            padding: 6,
-                                            borderRadius: 8,
-                                            backgroundColor: 'rgba(255,255,255,0.15)',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            transition: 'opacity 0.15s',
-                                        }}
-                                        onMouseEnter={e => e.currentTarget.style.opacity = '1'}
-                                        onMouseLeave={e => e.currentTarget.style.opacity = '0.65'}
-                                    >
-                                        <Github size={16} />
-                                    </a>
-                                )}
-                            </div>
-
-                            {/* Title + subtitle */}
-                            <div style={{ marginBottom: 12 }}>
-                                <h3 style={{
-                                    fontFamily: "'Plus Jakarta Sans', sans-serif",
-                                    fontWeight: 700,
-                                    fontSize: 22,
-                                    color: project.textColor,
-                                    letterSpacing: '-0.5px',
-                                    lineHeight: 1.15,
-                                    marginBottom: project.subtitle ? 4 : 0,
-                                }}>
-                                    {project.title}
-                                </h3>
-                                {project.subtitle && (
-                                    <p style={{
-                                        fontFamily: "'Inter', sans-serif",
-                                        fontSize: 13,
-                                        fontWeight: 500,
-                                        color: project.textColor,
-                                        opacity: 0.65,
-                                    }}>
-                                        {project.subtitle}
-                                    </p>
-                                )}
-                            </div>
-
-                            {/* Description */}
-                            <p style={{
-                                fontFamily: "'Inter', sans-serif",
-                                fontSize: 14,
-                                lineHeight: 1.65,
-                                color: project.textColor,
-                                opacity: 0.8,
-                                flexGrow: 1,
-                                marginBottom: 24,
-                            }}>
-                                {project.description}
-                            </p>
-
-                            {/* Tech tags */}
-                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-                                {project.tech.map((t, i) => (
-                                    <span
-                                        key={i}
-                                        style={{
-                                            fontFamily: "'Inter', sans-serif",
-                                            fontSize: 12,
-                                            fontWeight: 500,
-                                            color: project.textColor,
-                                            backgroundColor: 'rgba(255,255,255,0.2)',
-                                            padding: '4px 10px',
-                                            borderRadius: 9999,
-                                        }}
-                                    >
-                                        {t}
-                                    </span>
+const Projects = () => (
+    <section id="projects" style={{ padding: 'clamp(64px, 12cqh, 140px) 0' }}>
+        <div className="page">
+            <Reveal>
+                <p className="micro" style={{ marginBottom: 20 }}>Selected projects / 2025 – 2026</p>
+            </Reveal>
+            {projects.map((p) => (
+                <Reveal key={p.title}>
+                    <hr className="rule" />
+                    <article className="row split" style={{ display: 'grid', gridTemplateColumns: 'minmax(120px, 1fr) minmax(0, 2fr) minmax(0, 2.4fr)', gap: 24, padding: '32px 16px', margin: '0 -16px' }}>
+                        <span className="micro">{p.date}</span>
+                        <div>
+                            <h3 style={{ margin: 0, fontSize: 'clamp(36px, 4.6cqw, 68px)', lineHeight: 1 }}>
+                                <span className="serif">{p.title[0]}</span>
+                                <span className="sans-display">{p.title.slice(1)}</span>
+                            </h3>
+                            {p.subtitle && <p className="micro" style={{ margin: '10px 0 0' }}>{p.subtitle}</p>}
+                            {p.award && <p className="micro" style={{ margin: '10px 0 0', color: 'var(--ink)' }}>★ {p.award}</p>}
+                            <p className="micro" style={{ margin: '14px 0 0', lineHeight: 1.8 }}>{p.tech.join(' · ')}</p>
+                        </div>
+                        <div>
+                            <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'grid', gap: 12 }}>
+                                {p.bullets.map((b) => (
+                                    <li key={b} style={{ fontSize: 15, lineHeight: 1.55, paddingLeft: 16, position: 'relative' }}>
+                                        <span aria-hidden="true" style={{ position: 'absolute', left: 0 }}>—</span>{b}
+                                    </li>
                                 ))}
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-};
+                            </ul>
+                            {p.github && (
+                                <a href={p.github} target="_blank" rel="noopener noreferrer" className="micro link" style={{ display: 'inline-flex', alignItems: 'center', gap: 4, marginTop: 18, color: 'inherit' }}>
+                                    View code <ArrowUpRight size={12} aria-hidden="true" />
+                                </a>
+                            )}
+                        </div>
+                    </article>
+                </Reveal>
+            ))}
+            <hr className="rule" />
+        </div>
+    </section>
+);
 
 export default Projects;
