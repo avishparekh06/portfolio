@@ -24,7 +24,7 @@ const About = () => {
     };
 
     return (
-        <section id="about" style={{ backgroundColor: '#faf5e8', padding: '96px 0' }}>
+        <section id="about" style={{ backgroundColor: 'transparent', padding: '96px 0' }}>
             <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px' }}>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

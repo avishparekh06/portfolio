@@ -4,7 +4,7 @@ import { Mail, Github, Linkedin, Phone, MapPin, ArrowUpRight } from 'lucide-reac
 
 const Contact = () => {
     return (
-        <section id="contact" style={{ backgroundColor: '#faf5e8', padding: '96px 0 80px' }}>
+        <section id="contact" style={{ backgroundColor: 'transparent', padding: '96px 0 80px' }}>
             {/* Top border */}
             <div style={{ width: '100%', height: 1, backgroundColor: '#e5e5e5', marginBottom: 96 }} />
 

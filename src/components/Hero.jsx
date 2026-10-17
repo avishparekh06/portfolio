@@ -8,7 +8,7 @@ const Hero = () => {
             id="home"
             style={{
                 minHeight: '100vh',
-                backgroundColor: '#fffaf0',
+                backgroundColor: 'transparent',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',

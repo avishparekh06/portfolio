@@ -70,7 +70,7 @@ const Experience = () => {
     ];
 
     return (
-        <section id="experience" style={{ backgroundColor: '#fffaf0', padding: '96px 0' }}>
+        <section id="experience" style={{ backgroundColor: 'transparent', padding: '96px 0' }}>
             <div style={{ maxWidth: 896, margin: '0 auto', padding: '0 24px' }}>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
