@@ -23,11 +23,10 @@ function App() {
     <div className="stage">
       <div className="stage-head micro" aria-hidden="true">
         <span>Avish Parekh</span>
-        <span>Portfolio</span>
+        <span className="gap">Portfolio</span>
         <span>Vol.01 / 2026</span>
       </div>
       <div className="monitor-wrap">
-        <span className="cam" aria-hidden="true" />
         <div className="monitor">
         <ScrollRootContext.Provider value={scrollRef}>
           <Loader />
@@ -47,19 +46,8 @@ function App() {
           </div>
         </ScrollRootContext.Provider>
         </div>
-        <span className="chin-vents" aria-hidden="true" />
-        <span className="chin-logo" aria-hidden="true">AP</span>
-        <span className="power-led" aria-hidden="true" />
       </div>
-      <div className="stand" aria-hidden="true">
-        <div className="neck-joint" />
-        <div className="neck" />
-        <div className="foot" />
-      </div>
-      <div className="desk" aria-hidden="true">
-        <div className="keyboard" />
-        <div className="mouse" />
-      </div>
+      <div className="stand" aria-hidden="true" />
     </div>
   );
 }
