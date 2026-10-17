@@ -1,24 +1,41 @@
 import { useEffect, useRef } from 'react';
 import { sectionProgress } from '../lib/scrollMath.js';
+import { activeIndex, localProgress } from '../lib/story.js';
 import { SECTION_IDS } from './path.js';
+import { story } from './storyState.js';
 
-// Returns a ref holding 0..1 journey progress. Re-measures section anchors when the
-// document resizes (fonts/images loading) so the camera never drifts.
+const GROUPS = ['skills', 'experience', 'projects'];
+
+// Returns a ref holding 0..1 journey progress and keeps the shared `story` state current:
+// per-section progress, plus the card the reader is on in each group (cards opt in with
+// data-story="<group>"). Anchors are re-measured when the document resizes so nothing drifts.
 export default function useJourney() {
   const progress = useRef(0);
 
   useEffect(() => {
-    let anchors = [];
+    let boxes = [];
     const measure = () => {
-      anchors = SECTION_IDS.map((id) => {
+      boxes = SECTION_IDS.map((id) => {
         const el = document.getElementById(id);
         if (!el) return null;
         const r = el.getBoundingClientRect();
-        return r.top + window.scrollY + r.height / 2;
-      }).filter((v) => v !== null);
+        return { top: r.top + window.scrollY, height: r.height };
+      }).filter(Boolean);
     };
     const update = () => {
-      progress.current = sectionProgress(anchors, window.scrollY, window.innerHeight);
+      const vh = window.innerHeight;
+      const anchors = boxes.map((b) => b.top + b.height / 2);
+      progress.current = sectionProgress(anchors, window.scrollY, vh);
+      story.progress = progress.current;
+      boxes.forEach((b, i) => {
+        story.local[i] = localProgress(b.top, b.height, window.scrollY, vh);
+      });
+      GROUPS.forEach((g) => {
+        const rects = [...document.querySelectorAll(`[data-story="${g}"]`)].map((el) =>
+          el.getBoundingClientRect(),
+        );
+        story.active[g] = activeIndex(rects, vh);
+      });
     };
     const onResize = () => {
       measure();

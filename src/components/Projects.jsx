@@ -41,7 +41,7 @@ const projects = [
 const Projects = () => {
     return (
         <section id="projects" style={{ backgroundColor: 'transparent', padding: '96px 0' }}>
-            <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px' }}>
+            <div style={{ maxWidth: 760, margin: '0 0 0 max(0px, calc((100vw - 896px) / 4))', padding: '0 24px' }}>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -53,10 +53,11 @@ const Projects = () => {
                     <h2 className="display-lg">Things I've Built</h2>
                 </motion.div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: 20 }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 28 }}>
                     {projects.map((project, index) => (
                         <motion.div
                             key={index}
+                            data-story="projects"
                             initial={{ opacity: 0, y: 24 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}

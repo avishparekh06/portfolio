@@ -4,6 +4,10 @@ import useJourney from './useJourney.js';
 import CameraRig from './CameraRig.jsx';
 import Backdrop from './Backdrop.jsx';
 import HeroWorld from './worlds/HeroWorld.jsx';
+import AboutWorld from './worlds/AboutWorld.jsx';
+import ExperienceWorld from './worlds/ExperienceWorld.jsx';
+import ProjectsWorld from './worlds/ProjectsWorld.jsx';
+import ContactWorld from './worlds/ContactWorld.jsx';
 
 export default function Scene({ reduced, quality }) {
   const progress = useJourney();
@@ -30,6 +34,10 @@ export default function Scene({ reduced, quality }) {
       <Backdrop progress={progress} />
       <CameraRig progress={progress} reduced={reduced} />
       <HeroWorld {...worldProps} />
+      <AboutWorld {...worldProps} />
+      <ExperienceWorld {...worldProps} />
+      <ProjectsWorld {...worldProps} />
+      <ContactWorld {...worldProps} />
     </Canvas>
   );
 }
