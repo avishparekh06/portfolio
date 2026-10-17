@@ -249,9 +249,11 @@ html[data-loading='1']:not([data-reveal]) .screen-nav { opacity: 0; }
 .brand:focus-visible, .menu-item:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
 .title-zone { position: relative; height: 33cqh; display: flex; align-items: center; justify-content: center; }
-.page-title { display: flex; justify-content: center; align-items: baseline; gap: 0.22em; margin: 0; line-height: 0.92; white-space: nowrap; }
+.page-title { display: flex; justify-content: center; margin: 0; line-height: 0.92; white-space: nowrap; }
+/* only the words are centered; the "(UT)" tag hangs off their right edge without pushing them over */
+.title-words { position: relative; display: flex; align-items: baseline; gap: 0.22em; }
 .title-mask { display: block; overflow: hidden; padding: 0 0.07em 0.1em 0.05em; }
-.title-tag { align-self: flex-start; margin-left: -0.1em; padding-top: 0.6em; font-size: clamp(10px, 1.4cqw, 18px); }
+.title-tag { position: absolute; left: 100%; top: 0.6em; margin-left: 0.2em; padding: 0; font-size: clamp(10px, 1.4cqw, 18px); }
 .title-note { position: absolute; top: 50%; transform: translateY(-50%); margin: 0; color: var(--ink); line-height: 1.5; }
 .title-note-left { left: 0; text-align: left; }
 .title-note-right { right: 0; text-align: right; }
@@ -398,7 +400,8 @@ button, a { touch-action: manipulation; }
   .title-note { position: static; transform: none; grid-row: 2; margin-top: 14px; font-size: clamp(10px, 1.7cqw, 12px); }
   .title-note-left { grid-column: 1; text-align: left; }
   .title-note-right { grid-column: 2; text-align: right; }
-  .title-tag { position: absolute; right: 0; top: 0.1em; margin: 0; padding: 0; font-size: 12px; }
+  .title-words { display: block; position: static; }
+  .title-tag { position: absolute; left: auto; right: 0; top: 0.1em; margin: 0; padding: 0; font-size: 12px; }
 
   /* numbered menu: the same single row as desktop, each item a full-height tap target */
   .menu-row { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 8px; padding: 8px 0; margin-top: 18px; border-top: 1px solid var(--line); transition: color 0.35s ease; }

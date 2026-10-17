@@ -27,13 +27,15 @@ const Title = ({ page }) => {
 
     return (
         <h1 className={`page-title${meta ? '' : ' is-home'}`} key={page} style={{ fontSize: size, '--chars': Math.max(...words.map((w) => w.length)) }}>
-            <span className="title-mask">
-                <motion.span className="serif" style={{ display: 'inline-block' }} {...rise(0.12)}>{words[0]}</motion.span>
+            <span className="title-words">
+                <span className="title-mask">
+                    <motion.span className="serif" style={{ display: 'inline-block' }} {...rise(0.12)}>{words[0]}</motion.span>
+                </span>
+                <span className="title-mask">
+                    <motion.span className="sans-display" style={{ display: 'inline-block' }} {...rise(0.22)}>{words[1]}</motion.span>
+                </span>
+                {!meta && <sup className="micro title-tag">(UT)</sup>}
             </span>
-            <span className="title-mask">
-                <motion.span className="sans-display" style={{ display: 'inline-block' }} {...rise(0.22)}>{words[1]}</motion.span>
-            </span>
-            {!meta && <sup className="micro title-tag">(UT)</sup>}
         </h1>
     );
 };
