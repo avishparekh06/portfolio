@@ -12,10 +12,9 @@ const CursorLabel = ({ boundsRef, children, animate, transition, rest = [0.62, 0
     const labelRef = useRef(null);
 
     useLayoutEffect(() => {
-        // The bounds element's ref is attached after this child's layout effect on first mount, so on
-        // touch screens (no pointer to follow) fall back to the label's own container.
-        const coarse = window.matchMedia('(pointer: coarse)').matches;
-        const el = boundsRef.current || (coarse ? labelRef.current?.offsetParent : null);
+        // The bounds element's ref is attached after this child's layout effect on first mount, so fall
+        // back to the label's own container (the positioned element it sits in) for the resting spot.
+        const el = boundsRef.current || labelRef.current?.offsetParent;
         const box = el?.getBoundingClientRect();
         if (!box) return;
         px.set(box.width * rest[0]);

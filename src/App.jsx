@@ -124,9 +124,9 @@ function App() {
 
   const content = {
     home: <Home />,
-    projects: <Projects onOpen={setDetail} />,
-    about: <About />,
     experience: <Experience onOpen={setDetail} />,
+    about: <About />,
+    projects: <Projects onOpen={setDetail} />,
     contact: <Contact />,
   }[page];
 

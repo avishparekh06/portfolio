@@ -20,25 +20,21 @@ body {
   margin: 0;
   background-color: #b9b9b9;
   color: var(--ink);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Inter Tight', system-ui, sans-serif;
 }
 
 ::selection { background: var(--ink); color: var(--bg); }
 
-/* Mixed display type: Erode italic beside tight Inter Tight. Erode runs a touch small next to the
-   sans, so it is scaled up to match. */
+/* One typeface everywhere: Inter Tight (the face "Parekh" is set in). Titles use the tight
+   display tracking; body text and small labels use the normal tracking. */
 :root {
-  --serif: 'Erode', 'Times New Roman', serif;
-  --serif-ls: -0.02em;
-  --serif-scale: 1.12;
-  --display: 'Inter Tight', 'Inter', sans-serif;
+  --display: 'Inter Tight', system-ui, sans-serif;
   --display-ls: -0.045em;
 }
-.serif { font-size: calc(1em * var(--serif-scale)); font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: var(--serif-ls); }
-.sans-display { font-family: var(--display); font-weight: 500; letter-spacing: var(--display-ls); }
+.sans-display, .serif { font-family: var(--display); font-style: normal; font-weight: 500; letter-spacing: var(--display-ls); }
 
 .micro {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--display);
   font-size: 10.5px;
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -330,7 +326,7 @@ html[data-loading='1']:not([data-reveal]) .screen-nav { opacity: 0; }
 .detail-rows::-webkit-scrollbar { display: none; }
 .detail-row { padding: 2.3cqh 0; border-top: 1px solid #262626; font-family: var(--display); font-weight: 500; font-size: clamp(15px, 1.7cqw, 25px); line-height: 1.38; letter-spacing: -0.015em; color: #ececec; max-width: 46ch; }
 .detail-row:last-child { border-bottom: 1px solid #262626; }
-.detail-row .serif { letter-spacing: -0.01em; }
+.detail-row .serif { letter-spacing: inherit; font-weight: 600; }
 
 /* ------------------------------------------------------------------ transition screen */
 .transition-screen { position: absolute; inset: 0; z-index: 150; background: var(--black); color: #ececec; display: flex; align-items: center; justify-content: center; pointer-events: all; }
