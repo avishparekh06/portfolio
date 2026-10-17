@@ -142,7 +142,8 @@ a.link {
 }
 
 /* Small or short windows: skip the mockup and use the full window as the screen */
-@media (max-width: 900px), (max-height: 520px) {
+/* (also any touch-first device, e.g. tablets, where a scrolling screen-in-a-monitor is awkward) */
+@media (max-width: 900px), (max-height: 520px), (hover: none) and (pointer: coarse) {
   .stage { padding-top: 0; }
   .stage-head, .stand { display: none; }
   .monitor-wrap { width: 100vw; height: 100dvh; aspect-ratio: auto; margin-top: 0; padding: 0; border-radius: 0; background: none; box-shadow: none; }

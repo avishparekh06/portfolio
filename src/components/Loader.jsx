@@ -3,27 +3,17 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import Mascot, { ICON_COUNT } from './Mascot';
 import { ScrollRootContext } from '../scrollRoot';
 
-const SEEN_KEY = 'ap-loader-seen';
-
 // Stops the monitor screen from scrolling while the loader covers it.
 const setScrollLocked = (el, locked) => {
     if (el) el.style.overflow = locked ? 'hidden' : '';
 };
 
-const seenBefore = () => {
-    try {
-        return sessionStorage.getItem(SEEN_KEY) === '1';
-    } catch {
-        return false;
-    }
-};
-
-// First-visit loader: the mascot plays while a counter runs to 100, then tumbles and the
-// whole screen slides away. Shown once per session; reduced motion gets a quick fade.
+// Loader: the mascot plays while a counter runs to 100, then tumbles and the whole screen
+// slides away. Plays on every page load; reduced motion gets a quick fade.
 const Loader = () => {
     const reduced = useReducedMotion();
     const root = useContext(ScrollRootContext);
-    const [open, setOpen] = useState(() => !seenBefore());
+    const [open, setOpen] = useState(true);
     const [pct, setPct] = useState(0);
     const [icon, setIcon] = useState(0);
     const [tumble, setTumble] = useState(false);
@@ -42,11 +32,6 @@ const Loader = () => {
         const swap = setInterval(() => setIcon((i) => (i + 1) % ICON_COUNT), 520);
         const fall = setTimeout(() => setTumble(true), total + 100);
         const done = setTimeout(() => {
-            try {
-                sessionStorage.setItem(SEEN_KEY, '1');
-            } catch {
-                /* storage unavailable: loader just shows again next visit */
-            }
             setScrollLocked(scroller, false);
             setOpen(false);
         }, total + (reduced ? 200 : 900));
