@@ -20,7 +20,7 @@ const Projects = () => (
                                 <span className="sans-display">{p.title.slice(1)}</span>
                             </h3>
                             {p.subtitle && <p className="micro" style={{ margin: '10px 0 0' }}>{p.subtitle}</p>}
-                            {p.award && <p className="micro" style={{ margin: '10px 0 0', color: 'var(--ink)' }}>★ {p.award}</p>}
+                            {p.award && <p className="micro award" style={{ margin: '10px 0 0' }}>★ {p.award}</p>}
                             <p className="micro" style={{ margin: '14px 0 0', lineHeight: 1.8 }}>{p.tech.join(' · ')}</p>
                         </div>
                         <div>

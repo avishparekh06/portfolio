@@ -57,6 +57,8 @@ body {
 .row:hover a { color: var(--bg); }
 
 .muted { color: var(--muted); }
+/* Emphasised micro text: takes the row's own text color so it inverts correctly on hover */
+.micro.award, .row:hover .micro.award { color: inherit; }
 
 a.link {
   color: inherit;
