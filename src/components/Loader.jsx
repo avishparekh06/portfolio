@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { motion, useMotionValue, useReducedMotion, useSpring } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
+import CursorLabel from './CursorLabel';
 import Mascot, { ICON_COUNT } from './Mascot';
 import { ScrollRootContext } from '../scrollRoot';
 
@@ -27,36 +28,12 @@ const Loader = () => {
     const [move, setMove] = useState({ mx: 0, my: 0 });
     const mascotRef = useRef(null);
     const overlayRef = useRef(null);
-    // "Loading..." trails the cursor (resting near the top until the pointer moves)
-    const px = useMotionValue(0);
-    const py = useMotionValue(0);
-    const sx = useSpring(px, { stiffness: 260, damping: 28, mass: 0.6 });
-    const sy = useSpring(py, { stiffness: 260, damping: 28, mass: 0.6 });
 
     // Match the hero mascot's size, and park the "Loading..." label, before the first paint.
     useLayoutEffect(() => {
-        const box = overlayRef.current?.getBoundingClientRect();
-        if (box) {
-            px.set(box.width * 0.62);
-            py.set(box.height * 0.27);
-            sx.jump(px.get());
-            sy.jump(py.get());
-        }
         const hero = heroMascot();
         if (hero && mascotRef.current) mascotRef.current.style.width = `${hero.getBoundingClientRect().width}px`;
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    useEffect(() => {
-        const onMove = (e) => {
-            const box = overlayRef.current?.getBoundingClientRect();
-            if (!box) return;
-            px.set(e.clientX - box.left + 16);
-            py.set(e.clientY - box.top + 18);
-        };
-        window.addEventListener('pointermove', onMove);
-        return () => window.removeEventListener('pointermove', onMove);
-    }, [px, py]);
 
     useEffect(() => {
         const scroller = root.current;
@@ -115,7 +92,7 @@ const Loader = () => {
             ref={overlayRef}
             role="status"
             aria-label="Loading"
-            style={{ position: 'absolute', inset: 0, zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: landing ? 'none' : 'auto' }}
+            style={{ color: 'var(--ink)', position: 'absolute', inset: 0, zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: landing ? 'none' : 'auto' }}
         >
             {/* background: same color as the hero, so it simply goes away once the scene has landed */}
             <motion.div
@@ -123,14 +100,13 @@ const Loader = () => {
                 transition={{ duration: reduced ? 0.25 : 0.2 }}
                 style={{ position: 'absolute', inset: 0, backgroundColor: 'var(--bg)' }}
             />
-            <motion.span
-                className="micro"
+            <CursorLabel
+                boundsRef={overlayRef}
                 animate={{ opacity: landing ? 0 : 1 }}
                 transition={{ duration: 0.5, delay: landing ? 0.35 : 0 }}
-                style={{ position: 'absolute', left: 0, top: 0, x: sx, y: sy, color: 'var(--ink)', whiteSpace: 'nowrap', pointerEvents: 'none' }}
             >
                 Loading...
-            </motion.span>
+            </CursorLabel>
 
             <motion.div
                 ref={mascotRef}
