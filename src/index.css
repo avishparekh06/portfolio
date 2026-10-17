@@ -25,9 +25,17 @@ body {
 
 ::selection { background: var(--ink); color: var(--bg); }
 
-/* Mixed display type: italic serif beside tight medium sans */
-.serif { font-family: 'Instrument Serif', 'Times New Roman', serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
-.sans-display { font-family: 'Inter Tight', 'Inter', sans-serif; font-weight: 500; letter-spacing: -0.045em; }
+/* Mixed display type: italic serif beside tight medium sans. Pairings are swapped with
+   data-type on <html> (temporary type picker). */
+:root, [data-type='a'] { --serif: 'Instrument Serif', 'Times New Roman', serif; --serif-ls: -0.01em; --display: 'Inter Tight', 'Inter', sans-serif; --display-ls: -0.045em; }
+[data-type='b'] { --serif: 'Playfair Display', serif; --serif-ls: -0.02em; --display: 'Space Grotesk', sans-serif; --display-ls: -0.05em; }
+[data-type='c'] { --serif: 'Cormorant Garamond', serif; --serif-ls: -0.02em; --display: 'Manrope', sans-serif; --display-ls: -0.05em; }
+[data-type='d'] { --serif: 'Fraunces', serif; --serif-ls: -0.03em; --display: 'DM Sans', sans-serif; --display-ls: -0.05em; }
+[data-type='e'] { --serif: 'DM Serif Display', serif; --serif-ls: -0.01em; --display: 'Archivo', sans-serif; --display-ls: -0.045em; }
+[data-type='f'] { --serif: 'Bodoni Moda', serif; --serif-ls: -0.02em; --display: 'Instrument Sans', sans-serif; --display-ls: -0.05em; }
+
+.serif { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: var(--serif-ls); }
+.sans-display { font-family: var(--display); font-weight: 500; letter-spacing: var(--display-ls); }
 
 .micro {
   font-family: 'Inter', sans-serif;
@@ -158,3 +166,13 @@ a.link {
   .mascot-tail, .mascot-steam { animation: none; }
   .screen-scroll { scroll-behavior: auto; }
 }
+
+/* List bullet: a small solid square that follows the text color (inverts on row hover) */
+.bullet { position: absolute; left: 0; top: 0.62em; width: 5px; height: 5px; background: currentColor; }
+
+/* Temporary type picker */
+.type-picker { position: fixed; left: 12px; bottom: 12px; z-index: 400; display: flex; align-items: center; gap: 4px; padding: 5px 6px; background: #070707; border-radius: 9999px; font-family: 'Inter', sans-serif; }
+.type-picker span { color: #8f8f8f; font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; padding: 0 6px 0 8px; }
+.type-picker button { all: unset; cursor: pointer; width: 24px; height: 24px; display: grid; place-items: center; border-radius: 50%; color: #ececec; font-size: 11px; font-weight: 600; text-transform: uppercase; }
+.type-picker button[aria-pressed='true'] { background: #ececec; color: #070707; }
+.type-picker button:focus-visible { outline: 2px solid #ececec; outline-offset: 1px; }

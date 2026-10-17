@@ -58,7 +58,7 @@ const Loader = () => {
                 >
                     <span className="micro" style={{ position: 'absolute', top: '24%', left: '50%', transform: 'translateX(-50%)' }}>Loading...</span>
                     <Mascot icon={icon} className={tumble ? 'mascot-tumble' : ''} style={{ width: 'min(420px, 62cqw)' }} />
-                    <span className="micro" style={{ position: 'absolute', left: 'clamp(20px, 3.2cqw, 48px)', bottom: 28 }}>Avish Parekh — Portfolio</span>
+                    <span className="micro" style={{ position: 'absolute', left: 'clamp(20px, 3.2cqw, 48px)', bottom: 28 }}>Avish Parekh / Portfolio</span>
                     <span className="micro" style={{ position: 'absolute', right: 'clamp(20px, 3.2cqw, 48px)', bottom: 28 }}>{String(pct).padStart(2, '0')}%</span>
                 </motion.div>
             )}

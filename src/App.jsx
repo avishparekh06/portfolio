@@ -7,6 +7,7 @@ import About from './components/About';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import TypePicker from './components/TypePicker';
 import { ScrollRootContext } from './scrollRoot';
 
 // The whole site lives inside a monitor on a gray stage, like the reference. The "screen" is
@@ -21,6 +22,7 @@ function App() {
 
   return (
     <div className="stage">
+      <TypePicker />
       <div className="stage-head micro" aria-hidden="true">
         <span>Avish Parekh</span>
         <span className="gap">Portfolio</span>

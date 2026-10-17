@@ -21,7 +21,7 @@ const Experience = () => (
                         <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'grid', gap: 12 }}>
                             {e.bullets.map((b) => (
                                 <li key={b} style={{ fontSize: 15, lineHeight: 1.55, paddingLeft: 16, position: 'relative' }}>
-                                    <span aria-hidden="true" style={{ position: 'absolute', left: 0 }}>—</span>{b}
+                                    <span aria-hidden="true" className="bullet" />{b}
                                 </li>
                             ))}
                         </ul>
